@@ -48,7 +48,6 @@ sys.path.append(PPRZ_SRC + "/sw/lib/python")
 # --- PprzLink
 from pprzlink.ivy import IvyMessagesInterface
 from pprzlink.message import PprzMessage
-from settings_xml_parse import PaparazziACSettings
 # ---
 
 """\

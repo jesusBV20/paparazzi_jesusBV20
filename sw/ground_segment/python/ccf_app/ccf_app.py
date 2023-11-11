@@ -20,13 +20,10 @@
 
 """\
 PyQt GUI app. for centralized circular formations (CCF) employing guidance vector fields (GVF)
-
->>> from pathlib import Path
->>> hex_content = Path('icon.png').read_bytes()
->>> Path('icon.py').write_text(f'icon = {hex_content}')
 """
 
 import sys
+from os import path, getenv
 from pathlib import Path
 
 from PySide6.QtCore import QCoreApplication
@@ -34,6 +31,8 @@ from PySide6.QtGui import QGuiApplication, QIcon
 from PySide6.QtQml import QQmlApplicationEngine
 
 from acpanel import ACPanel
+
+APP_ICON_PATH = path.join(getenv("PAPARAZZI_SRC"),"data","pictures","penguin_icon_ccf.png")
 
 def gen_app(name):
     app = QGuiApplication(sys.argv)
@@ -44,7 +43,7 @@ def run_qml(app):
     engine = QQmlApplicationEngine()
     engine.addImportPath(Path(__file__).parent)
     engine.loadFromModule("control_panel", "Main")
-    app.setWindowIcon(QIcon("penguin_icon_ccf.png"))
+    app.setWindowIcon(QIcon(APP_ICON_PATH))
 
     if not engine.rootObjects():
         sys.exit(-1)
